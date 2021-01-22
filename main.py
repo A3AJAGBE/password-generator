@@ -11,6 +11,7 @@ print('Generate a strong password that includes letters, numbers and symbols\n')
 # Inputs
 password_length = int(input("What is your required password length?\n"))
 
+# Generating the password
 password = []
 if password_length <= 5:
     for num in range(1):
@@ -26,8 +27,6 @@ if password_length <= 5:
     for letter in range(password_length):
         letter_output = random.choice(letters)
         password += letter_output
-
-    print(password)
 else:
     for num in range(2, 4):
         num_output = random.choice(numbers)
@@ -39,8 +38,16 @@ else:
         password += symbol_output
         password_length -= len(num_output)
 
-    for letter in range(password_length + 1):
+    for letter in range(password_length):
         letter_output = random.choice(letters)
         password += letter_output
 
-    print(password)
+# Shuffle the generated password
+random.shuffle(password)
+
+# Convert the list to string
+password_generated = ""
+for char in password:
+    password_generated += char
+print(f"Generated password is: {password_generated}")
+print('Thank you for using this application!')
